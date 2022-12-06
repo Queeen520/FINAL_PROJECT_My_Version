@@ -23,6 +23,9 @@ class Course
     #[ORM\ManyToOne(inversedBy: 'courses')]
     private ?CourseCategory $fkCourseCategory = null;
 
+    #[ORM\ManyToOne(inversedBy: 'courses')]
+    private ?Price $fkPrice = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Course
     public function setFkCourseCategory(?CourseCategory $fkCourseCategory): self
     {
         $this->fkCourseCategory = $fkCourseCategory;
+
+        return $this;
+    }
+
+    public function getFkPrice(): ?Price
+    {
+        return $this->fkPrice;
+    }
+
+    public function setFkPrice(?Price $fkPrice): self
+    {
+        $this->fkPrice = $fkPrice;
 
         return $this;
     }
