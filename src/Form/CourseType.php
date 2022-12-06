@@ -4,8 +4,9 @@ namespace App\Form;
 
 use App\Entity\Course;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormBuilderInterface;
+
 
 class CourseType extends AbstractType
 {
@@ -13,8 +14,7 @@ class CourseType extends AbstractType
     {
         $builder
             ->add('startTime')
-            ->add('endTime')
-        ;
+            ->add('endTime');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
