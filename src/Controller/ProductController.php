@@ -87,7 +87,7 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/test', name: 'app_product_delete_test', methods: ['GET'])]
+    #[Route('/test/{id}', name: 'app_product_delete_test', methods: ['POST'])]
     public function test_route(Request $request, Product $product, ProductRepository $productRepository): Response
     {
         dd($_GET);
