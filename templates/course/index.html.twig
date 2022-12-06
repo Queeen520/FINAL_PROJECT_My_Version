@@ -11,7 +11,9 @@
                 <th>Id</th>
                 <th>StartTime</th>
                 <th>EndTime</th>
+                 <th>category</th>
                 <th>actions</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -20,6 +22,7 @@
                 <td>{{ course.id }}</td>
                 <td>{{ course.startTime ? course.startTime|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ course.endTime ? course.endTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ course.fkCourseCategory ? course.fkCourseCategory.name  : '' }}</td>
                 <td>
                     <a href="{{ path('app_course_show', {'id': course.id}) }}">show</a>
                     <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>

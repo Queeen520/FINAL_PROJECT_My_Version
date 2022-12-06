@@ -20,6 +20,9 @@ class Course
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $endTime = null;
 
+    #[ORM\ManyToOne(inversedBy: 'courses')]
+    private ?CourseCategory $fkCourseCategory = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Course
     public function setEndTime(\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    public function getFkCourseCategory(): ?CourseCategory
+    {
+        return $this->fkCourseCategory;
+    }
+
+    public function setFkCourseCategory(?CourseCategory $fkCourseCategory): self
+    {
+        $this->fkCourseCategory = $fkCourseCategory;
 
         return $this;
     }

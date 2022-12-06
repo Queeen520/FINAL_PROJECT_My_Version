@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CourseCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CourseCategoryRepository::class)]
@@ -21,6 +23,14 @@ class CourseCategory
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $image = null;
+
+    #[ORM\OneToMany(mappedBy: 'fkCourseCategory', targetEntity: Course::class)]
+    private Collection $courses;
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +69,36 @@ class CourseCategory
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Course>
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): self
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses->add($course);
+            $course->setFkCourseCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): self
+    {
+        if ($this->courses->removeElement($course)) {
+            // set the owning side to null (unless already changed)
+            if ($course->getFkCourseCategory() === $this) {
+                $course->setFkCourseCategory(null);
+            }
+        }
 
         return $this;
     }
