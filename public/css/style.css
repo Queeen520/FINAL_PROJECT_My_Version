@@ -59,3 +59,37 @@ hr {
 footer {
     background-color: var(--grey) !important;
 }
+
+.username {
+    font-weight: 705;
+}
+
+footer .col-12 {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* CARDS FROM HERE */
+
+.btn.btn-details {
+    display: block;
+    border: 3.5px solid var(--dark-red);
+}
+
+.btn.btn-details:hover,
+.btn.btn.btn-details:focus {
+    animation: pulse 1.5s;
+    box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0em var(--dark-red);
+    }
+
+    100% {
+        box-shadow: 0 0 0 2em transparent;
+    }
+}
