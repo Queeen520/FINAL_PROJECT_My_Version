@@ -1,0 +1,43 @@
+- Professional styling attractive to other businesses 
+
+- Information about the courses 
+
+- Information about the trainer (and potentially her team in later stages) 
+
+- Reviews from past customers (Connection to and import of google 
+and facebook reviews if desiredser)
+
+- Image gallery 
+
+- Contact form 
+
+- The option to book courses (pre-booking, needs to be checked 
+and confirmed by company) 
+
+- Differing prices for different customers (I.e. businesses, private persons, 
+schools & universities) 
+
+- Information on when booking is still possible (I.e. a calendar displaying 
+when times are I.e. already booked) 
+
+- Ability to change availability on certain dates/timeblocks 
+manually (ease of use would be important) 
+
+- A login area where customers can download their certificates 
+
+- Usability by the customer (not a digital native) to I.e. add reviews, 
+change course details, add images 
+
+_________________________________________________________________
+
+Nice to haves would be (by priority): 
+
+- Automatic generation of course certificates (can be a template 
+which inserts name and dates from database) 
+
+- Multilanguage support 
+
+- Option for multiple trainers to exist and to see which trainings they 
+are assigned to (login with different roles for user, trainer, admin) 
+
+- Connection to and import of google and facebook reviews if desiredser
