@@ -16,6 +16,12 @@
     font-weight: 709;
 }
 
+a.btn-login,
+a.btn-signup {
+    color: var(--black);
+    text-decoration: none;
+}
+
 main h3 {
     font-weight: 711;
     display: flex;
