@@ -72,12 +72,15 @@ class CourseCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $pictureFile = $form->get('image')->getData();
+            
+            // ************************** File Uploader Code ******************************
             //pictureUrl is the name given to the input field
             if ($pictureFile) {
                 unlink('pictures/'.$courseCategory->getImage());
                 $pictureFileName = $fileUploader->upload($pictureFile);
                 $courseCategory->setImage($pictureFileName);
             }
+            // *****************************************************************************
 
             $courseCategoryRepository->save($courseCategory, true);
 

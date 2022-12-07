@@ -30,6 +30,7 @@ class CourseCategoryType extends AbstractType
             //not mandatory to have a file
                 'required' => false,
 
+            //file uploader
             //in the associated entity, so you can use the PHP constraint classes as validators
                 'constraints' => [
                     new File([
@@ -43,6 +44,7 @@ class CourseCategoryType extends AbstractType
                     ])
                 ]
             ])
+           
         ;
     }
 
