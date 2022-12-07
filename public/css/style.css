@@ -88,6 +88,11 @@ footer .col-12 {
     font-weight: 709;
 }
 
+a.btn-signout {
+    text-decoration: none;
+    color: var(--black);
+}
+
 
 /* CARDS FROM HERE */
 
@@ -110,6 +115,7 @@ footer .col-12 {
     0% {
         box-shadow: 0 0 0 0em var(--dark-red);
     }
+
     100% {
         box-shadow: 0 0 0 2em transparent;
     }

@@ -11,7 +11,7 @@
                     <span class="logo-first">First<span class="logo-aid">Aid</span></span>
                 </a>
 
-                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center align-items-baseline my-md-0 text-small">
                     <li>
                         <a href="#" class="nav-link">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24">
@@ -28,25 +28,11 @@
                             About
                         </a>
                     </li>
+                    <li>
+                        <button type="button" class="btn btn-signout"><a class="btn-signout"
+                            href="{{ path('app_logout') }}">Logout</a></button>
+                    </li>
                 </ul>
-            </div>
-        </div>
-    </div>
-    <div class="px-3 py-2 border-bottom mb-3">
-        <div class="container d-flex flex-row justify-content-end">
-            <div class="text-end">
-                {% if is_granted('ROLE_ADMIN') %}
-                <button type="button" class="btn btn-signout"><a class="btn-signout"
-                        href="{{ path('app_logout') }}">Logout</a></button>
-
-                {% elseif is_granted('ROLE_USER') %}
-                <button type="button" class="btn btn-signout"><a class="btn-signout"
-                        href="{{ path('app_logout') }}">Logout</a></button>
-                {% else %}
-
-                <button type="button" class="btn btn-light me-2"><a class="btn-login" href="/login">Login</a></button>
-                <button type="button" class="btn btn-signup"><a class="btn-signup" href="/register">Sign-up</a></button>
-                {% endif %}
             </div>
         </div>
     </div>
