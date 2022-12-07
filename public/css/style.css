@@ -117,3 +117,22 @@ footer .col-12 {
         box-shadow: 0 0 0 2em transparent;
     }
 }
+
+/* LOGIN PAGE */
+
+h1#please-sign-in {
+    font-weight: 707;
+    display: flex;
+    justify-content: center;
+}
+
+.email-label,
+.password-label {
+    font-weight: 705;
+    padding-bottom: 1%;
+}
+
+.btn.btn-lg {
+    background-color: var(--bright-red);
+    font-weight: 705;
+}
