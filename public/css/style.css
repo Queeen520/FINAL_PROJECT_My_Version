@@ -65,7 +65,6 @@ i {
     border-radius: 95%;
 }
 
-
 footer {
     background-color: var(--grey) !important;
 }
@@ -90,7 +89,6 @@ footer .col-12 {
 }
 
 
-
 /* CARDS FROM HERE */
 
 .card img {
@@ -112,11 +110,11 @@ footer .col-12 {
     0% {
         box-shadow: 0 0 0 0em var(--dark-red);
     }
-
     100% {
         box-shadow: 0 0 0 2em transparent;
     }
 }
+
 
 /* LOGIN PAGE */
 
@@ -135,4 +133,11 @@ h1#please-sign-in {
 .btn.btn-lg {
     background-color: var(--bright-red);
     font-weight: 705;
+}
+
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
