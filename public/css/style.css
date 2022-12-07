@@ -42,6 +42,10 @@ main p {
     padding-left: 5%;
 }
 
+p.offer {
+    text-align: center;
+}
+
 i {
     color: var(--bright-red);
 }
@@ -50,7 +54,7 @@ i {
     color: white !important;
 }
 
-hr {
+#break-content {
     border-top: 5px solid var(--black) !important;
     border-radius: 95%;
 }
@@ -69,9 +73,23 @@ footer .col-12 {
     justify-content: center;
 }
 
+.btn.btn-light {
+    font-weight: 707;
+}
+
+.btn.btn-signup,
+.btn.btn-signout {
+    background-color: var(--bright-red);
+    font-weight: 709;
+}
+
 
 
 /* CARDS FROM HERE */
+
+.card img {
+    overflow: hidden;
+}
 
 .btn.btn-details {
     display: block;
