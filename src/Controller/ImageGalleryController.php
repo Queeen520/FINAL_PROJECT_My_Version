@@ -76,7 +76,9 @@ class ImageGalleryController extends AbstractController
             
             //pictureUrl is the name given to the input field
             if ($pictureFile) {
+                if($imageGallery->getImage() && file_exists('pictures/'.$imageGallery->getImage())){
                 unlink('pictures/'.$imageGallery->getImage());
+                }
                 $pictureFileName = $fileUploader->upload($pictureFile);
                 $imageGallery->setImage($pictureFileName);
             }
