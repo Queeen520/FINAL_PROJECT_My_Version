@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %} {% block title %}Book your First Aid Course!{%
 endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
+    
+
 </div>
 <div class="col d-flex flex-column h-sm-100" data-aos="fade-left" data-aos-duration="1100">
     <main class="row overflow-auto">
@@ -17,23 +19,27 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
                         <div class="card">
                             <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
                                 style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
-                            <div class="card-body">
-                                <h5 class="card-title">Course Title</h5>
-                                <p class="card-text">Some information about the course.
+                            <div class="card-body" style="width: 25rem;">
+                                {% for x in course1 %}
+                                <h5 class="card-title">{{x.name}}</h5>
+                                <p class="card-text">{{x.description}}
                                 </p>
                                 <a class="btn btn-details" href="/details"><span>Details</span></a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="col d-flex justify-content-center" data-aos="fade-down-left" data-aos-duration="1200">
-                        <div class="card">
+                        <div class="card" style="width: 25rem;">
                             <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
                                 style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
                             <div class="card-body">
-                                <h5 class="card-title">Course Title</h5>
-                                <p class="card-text">Some information about the course.
+                                {% for x in course2 %}
+                                <h5 class="card-title">{{x.name}}</h5>
+                                <p class="card-text">{{x.description}}
                                 </p>
                                 <a class="btn btn-details" href="/details"><span>Details</span></a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
