@@ -20,9 +20,7 @@ class CourseCategoryType extends AbstractType
             ->add('name')
             ->add('description')
 
-            // ->add('image')
-
-            //build the form using the file type input
+            // build the form using the file type input
             ->add('image', FileType::class, [
                 'label' => 'Upload Picture',
             //unmapped means that is not associated to any entity property
