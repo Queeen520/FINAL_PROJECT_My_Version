@@ -79,8 +79,8 @@ class CourseCategoryController extends AbstractController
             //pictureUrl is the name given to the input field
             if ($pictureFile) {
                 // check if existing image is not null and file exists
-                if($imageGallery->getImage() && file_exists('pictures/'.$imageGallery->getImage())){
-                unlink('pictures/'.$courseCategory->getImage());
+                if($courseCategory->getImage() && file_exists('pictures/'.$courseCategory   ->getImage())){
+                unlink('pictures/'.$courseCategory->getImage());}
                 $pictureFileName = $fileUploader->upload($pictureFile);
                 $courseCategory->setImage($pictureFileName);
             }
