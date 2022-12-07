@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+// needed for file upload
 use App\Service\FileUploader;
 
 use App\Entity\CourseCategory;

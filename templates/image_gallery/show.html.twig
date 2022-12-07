@@ -18,6 +18,10 @@
             <tr>
                 <th>Image</th>
                 <td>{{ image_gallery.image }}</td>
+               <td> <img
+        src="{{asset('pictures/') ~ image_gallery.image}}"
+        alt="image"
+        width="300" /></td>
             </tr>
         </tbody>
     </table>

@@ -22,9 +22,7 @@ class CourseCategoryType extends AbstractType
             ->add('name', TextType::class, ["attr" => ["class"=>"form-control mb-2"]])
             ->add('description', TextType::class, ["attr" => ["class"=>"form-control mb-2"]])
 
-            // ->add('image')
-
-            //build the form using the file type input
+            // build the form using the file type input
             ->add('image', FileType::class, [
                 'attr' => ["class"=>"form-control mb-2"],
                 'label' => 'Upload Picture',
