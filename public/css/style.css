@@ -141,3 +141,10 @@ h1#please-sign-in {
     justify-content: center;
     align-items: center;
 }
+
+.required {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
