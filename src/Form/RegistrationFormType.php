@@ -20,9 +20,8 @@ class RegistrationFormType extends AbstractType
         $builder
            
             ->add('email', TextType::class, ["attr" => ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your email'] ])
-            ->add('agreeTerms', CheckboxType::class, [
+            ->add('agreeTerms', CheckboxType::class, ['attr' => ['class' => 'd-flex flex-row align-items-center my-0'],
                 'mapped' => false,
-                'attr' => ['class' => 'mx-3 my-2'],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',

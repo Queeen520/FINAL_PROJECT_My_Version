@@ -1,19 +1,17 @@
-{% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block
-body %} {% include 'user_navbar.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
 <div class="container">
-  <h1 class="d-flex justify-content-center">Register</h1>
+    <h1 class="d-flex justify-content-center">Register</h1>
 
-  <div class="reg-form">
-    {{ form_start(registrationForm) }} {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, { label: "Password" }) }}
-    {{ form_row(registrationForm.agreeTerms) }}
+    <div class="reg-form">
+        {{ form_start(registrationForm) }} {{ form_row(registrationForm.email) }} {{ form_row(registrationForm.plainPassword, { label: "Password" }) }}
+    </div>
+    <div class="reg-form">
+        {{ form_row(registrationForm.agreeTerms) }}
+        <button type="submit" class="btn btn-danger">Register</button> {{ form_end(registrationForm) }}
+    </div>
 
-    <button type="submit" class="btn btn-danger">Register</button>
-    {{ form_end(registrationForm) }}
-  </div>
-
-  {# <a href="{{ path('app_login') }}">login</a>
-  <a href="{{ path('app_register') }}">register</a>
-  <a href="{{ path('app_logout') }}">logout</a> #}
+    {# <a href="{{ path('app_login') }}">login</a>
+    <a href="{{ path('app_register') }}">register</a>
+    <a href="{{ path('app_logout') }}">logout</a> #}
 </div>
 {% endblock %}
