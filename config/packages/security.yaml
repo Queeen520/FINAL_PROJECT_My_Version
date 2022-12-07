@@ -1,4 +1,5 @@
 security:
+    access_denied_url: app_course_index
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
@@ -33,7 +34,12 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }  # /admin/*
         - { path: ^/user, roles: ROLE_USER } # /user/*
-        - { path: ^/course, roles: ROLE_ADMIN } # /user/*
+        - { path: ^/course/new, roles: [ROLE_ADMIN, ROLE_TRAINER] } # /admin, trainer/*
+        - { path: ^/course/[0-9]*/edit, roles: [ROLE_ADMIN, ROLE_TRAINER] } # /admin, trainer/*
+        - { path: ^/course/category, roles: [ROLE_ADMIN, ROLE_TRAINER] } # /admin, trainer/*
+        - { path: ^/price, roles: [ROLE_ADMIN, ROLE_TRAINER] } # /admin, trainer/*
+        
+        
 
 when@test:
     security:
