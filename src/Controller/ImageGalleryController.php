@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+// needed for file upload
+use App\Service\FileUploader;
+
 use App\Entity\ImageGallery;
 use App\Form\ImageGalleryType;
 use App\Repository\ImageGalleryRepository;
@@ -22,11 +25,22 @@ class ImageGalleryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_image_gallery_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ImageGalleryRepository $imageGalleryRepository): Response
+    public function new(Request $request, ImageGalleryRepository $imageGalleryRepository, FileUploader $fileUploader): Response
     {
         $imageGallery = new ImageGallery();
         $form = $this->createForm(ImageGalleryType::class, $imageGallery);
         $form->handleRequest($request);
+
+        // ************************** File Uploader Code ******************************
+
+        $pictureFile = $form->get('image')->getData();
+        //pictureUrl is the name given to the input field
+        if ($pictureFile) {
+            $pictureFileName = $fileUploader->upload($pictureFile);
+            $imageGallery->setImage($pictureFileName);
+        }
+
+        // *****************************************************************************
 
         if ($form->isSubmitted() && $form->isValid()) {
             $imageGalleryRepository->save($imageGallery, true);
@@ -49,12 +63,25 @@ class ImageGalleryController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_image_gallery_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, ImageGallery $imageGallery, ImageGalleryRepository $imageGalleryRepository): Response
+    public function edit(Request $request, ImageGallery $imageGallery, ImageGalleryRepository $imageGalleryRepository, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(ImageGalleryType::class, $imageGallery);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // ************************** File Uploader Code ******************************
+            
+            $pictureFile = $form->get('image')->getData();
+            
+            //pictureUrl is the name given to the input field
+            if ($pictureFile) {
+                unlink('pictures/'.$imageGallery->getImage());
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $imageGallery->setImage($pictureFileName);
+            }
+            // *****************************************************************************
+
             $imageGalleryRepository->save($imageGallery, true);
 
             return $this->redirectToRoute('app_image_gallery_index', [], Response::HTTP_SEE_OTHER);
