@@ -1,41 +1,53 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}CourseCategory index{% endblock
+%} {% block body %}
+<div class="container">
+  <h1>CourseCategory index</h1>
 
-{% block title %}CourseCategory index{% endblock %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course_category in course_categories %}
+      <tr>
+        <td>{{ course_category.id }}</td>
+        <td>{{ course_category.name }}</td>
+        <td>{{ course_category.description }}</td>
+        <td>{{ course_category.image }}</td>
+        <td>
+          <a
+            href="{{
+              path('app_course_category_show', { id: course_category.id })
+            }}"
+            >show</a
+          >
+          <a
+            href="{{
+              path('app_course_category_edit', { id: course_category.id })
+            }}"
+            >edit</a
+          >
+        </td>
+      </tr>
 
-{% block body %}
-    <h1>CourseCategory index</h1>
+      <img
+        src="{{asset('pictures/') ~ course_category.image}}"
+        alt="image"
+        width="300" />
+      {% else %}
+      <tr>
+        <td colspan="5">no records found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for course_category in course_categories %}
-            <tr>
-                <td>{{ course_category.id }}</td>
-                <td>{{ course_category.name }}</td>
-                <td>{{ course_category.description }}</td>
-                <td>{{ course_category.image }}</td>
-                <td>
-                    <a href="{{ path('app_course_category_show', {'id': course_category.id}) }}">show</a>
-                    <a href="{{ path('app_course_category_edit', {'id': course_category.id}) }}">edit</a>
-                </td>
-            </tr>
-
-            <img src="{{asset('pictures/') ~ course_category.image}}" alt="image" width="300">
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_course_category_new') }}">Create new</a>
+  <a href="{{ path('app_course_category_new') }}">Create new</a>
+</div>
 {% endblock %}
