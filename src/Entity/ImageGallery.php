@@ -19,6 +19,9 @@ class ImageGallery
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'imageGalleries')]
+    private ?Course $fkCourse = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class ImageGallery
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getFkCourse(): ?Course
+    {
+        return $this->fkCourse;
+    }
+
+    public function setFkCourse(?Course $fkCourse): self
+    {
+        $this->fkCourse = $fkCourse;
 
         return $this;
     }

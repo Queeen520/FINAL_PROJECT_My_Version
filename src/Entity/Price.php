@@ -31,9 +31,13 @@ class Price
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $name = null;
 
+    #[ORM\OneToMany(mappedBy: 'price', targetEntity: CourseCategory::class)]
+    private Collection $fkCourseCategory;
+
     public function __construct()
     {
         $this->courses = new ArrayCollection();
+        $this->fkCourseCategory = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -115,6 +119,36 @@ class Price
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CourseCategory>
+     */
+    public function getFkCourseCategory(): Collection
+    {
+        return $this->fkCourseCategory;
+    }
+
+    public function addFkCourseCategory(CourseCategory $fkCourseCategory): self
+    {
+        if (!$this->fkCourseCategory->contains($fkCourseCategory)) {
+            $this->fkCourseCategory->add($fkCourseCategory);
+            $fkCourseCategory->setPrice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFkCourseCategory(CourseCategory $fkCourseCategory): self
+    {
+        if ($this->fkCourseCategory->removeElement($fkCourseCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($fkCourseCategory->getPrice() === $this) {
+                $fkCourseCategory->setPrice(null);
+            }
+        }
 
         return $this;
     }

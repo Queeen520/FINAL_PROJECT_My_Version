@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -28,6 +30,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'fkUser', targetEntity: PreBooking::class)]
+    private Collection $preBookings;
+
+    public function __construct()
+    {
+        $this->preBookings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,5 +107,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, PreBooking>
+     */
+    public function getPreBookings(): Collection
+    {
+        return $this->preBookings;
+    }
+
+    public function addPreBooking(PreBooking $preBooking): self
+    {
+        if (!$this->preBookings->contains($preBooking)) {
+            $this->preBookings->add($preBooking);
+            $preBooking->setFkUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePreBooking(PreBooking $preBooking): self
+    {
+        if ($this->preBookings->removeElement($preBooking)) {
+            // set the owning side to null (unless already changed)
+            if ($preBooking->getFkUser() === $this) {
+                $preBooking->setFkUser(null);
+            }
+        }
+
+        return $this;
     }
 }

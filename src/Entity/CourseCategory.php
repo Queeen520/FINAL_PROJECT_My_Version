@@ -27,6 +27,9 @@ class CourseCategory
     #[ORM\OneToMany(mappedBy: 'fkCourseCategory', targetEntity: Course::class)]
     private Collection $courses;
 
+    #[ORM\ManyToOne(inversedBy: 'fkCourseCategory')]
+    private ?Price $price = null;
+
     public function __construct()
     {
         $this->courses = new ArrayCollection();
@@ -99,6 +102,18 @@ class CourseCategory
                 $course->setFkCourseCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?Price
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?Price $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
