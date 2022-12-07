@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\FileUploader;
+
 use App\Entity\CourseCategory;
 use App\Form\CourseCategoryType;
 use App\Repository\CourseCategoryRepository;
@@ -22,13 +24,26 @@ class CourseCategoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_course_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CourseCategoryRepository $courseCategoryRepository): Response
+    public function new(Request $request, CourseCategoryRepository $courseCategoryRepository, FileUploader $fileUploader): Response
     {
         $courseCategory = new CourseCategory();
         $form = $this->createForm(CourseCategoryType::class, $courseCategory);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            // ************************** File Uploader Code ******************************
+
+            $pictureFile = $form->get('image')->getData();
+            //pictureUrl is the name given to the input field
+            if ($pictureFile) {
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $courseCategory->setImage($pictureFileName);
+            }
+
+            // *****************************************************************************
+
             $courseCategoryRepository->save($courseCategory, true);
 
             return $this->redirectToRoute('app_course_category_index', [], Response::HTTP_SEE_OTHER);
@@ -49,12 +64,21 @@ class CourseCategoryController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_course_category_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, CourseCategory $courseCategory, CourseCategoryRepository $courseCategoryRepository): Response
+    public function edit(Request $request, CourseCategory $courseCategory, CourseCategoryRepository $courseCategoryRepository, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(CourseCategoryType::class, $courseCategory);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $pictureFile = $form->get('image')->getData();
+            //pictureUrl is the name given to the input field
+            if ($pictureFile) {
+                unlink('pictures/'.$courseCategory->getImage());
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $courseCategory->setImage($pictureFileName);
+            }
+
             $courseCategoryRepository->save($courseCategory, true);
 
             return $this->redirectToRoute('app_course_category_index', [], Response::HTTP_SEE_OTHER);
