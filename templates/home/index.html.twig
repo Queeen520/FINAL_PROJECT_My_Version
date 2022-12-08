@@ -1,8 +1,25 @@
 {% extends 'base.html.twig' %} {% block title %}Book your First Aid Course!{%
-endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
+endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
 
+
+<div id="hero">
+    <div class="hero-container">
+        <div class="left-part px-5" data-aos="fade-up" data-aos-duration="1750">
+            <h2>Only 1 in 20 people feels knowledgeable and confident in using First Aid.</h2>
+            <h4>First Aid can save your life and the lives of your loved ones.</h4>
+            <h5>In case of doubt, it's an emergency case. Learn First Aid now!</h5>
+            <button class="learn-more"><a href="/course">Learn more</a></button>
+        </div>
+        <div class="right-part" data-aos="fade-left" data-aos-duration="1750">
+            <img class="hero-img" src="{{ asset('pictures/hero.png')}}" alt="test">
+        </div>
+    </div>
+</div>
+<div id="courses">
 
 </div>
+
+{# </div>
 <div class="col d-flex flex-column h-sm-100" data-aos="fade-left" data-aos-duration="1100">
     <main class="row overflow-auto">
         <div class="col pt-4">
@@ -16,6 +33,7 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
             <div class="py-3">
                 <div
                     class="row row-cols-xxl-2 row-cols-xl-2 row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-xs-1 g-4 d-flex flex-row justify-content-center">
+                    #}
                     {# {% for course in coursecategories %}
                     <div class="col d-flex flex-row justify-content-center" data-aos="fade-down-right"
                         data-aos-duration="1200">
@@ -31,7 +49,7 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
                         </div>
                     </div>
                     {% endfor %} #}
-                    {% for course in courses %}
+                    {# {% for course in courses %}
                     <div class="col d-flex flex-row justify-content-center" data-aos="fade-down-right"
                         data-aos-duration="1200">
                         <div class="card">
@@ -43,13 +61,13 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
                                 <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
                                 <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
                                 <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
-                                {# <p class="card-text">{{course.description}} #}
+                                <p class="card-text">{{course.description}}
                                 </p>
                                 <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                    {% endfor %} #}
                     <!--
                     <div class="col d-flex justify-content-center" data-aos="fade-down-left" data-aos-duration="1200">
                         <div class="card" style="width: 25rem;">
@@ -63,6 +81,7 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
                             </div>
                         </div>
                     </div> -->
+                    {#
                 </div>
             </div>
         </div>
@@ -72,5 +91,5 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
     </footer>
 </div>
 </div>
-</div>
+</div> #}
 {% endblock %}
