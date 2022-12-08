@@ -45,7 +45,7 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
                                 <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
                                 {# <p class="card-text">{{course.description}} #}
                                 </p>
-                                <a class="btn btn-details" href="/course/{id}"><span>Details</span></a>
+                                <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
                             </div>
                         </div>
                     </div>
