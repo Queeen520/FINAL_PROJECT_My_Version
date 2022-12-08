@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
+<div class="container">
+    <h1 class="d-flex justify-content-center">Register</h1>
+
+    <div class="reg-form">
+        {{ form_start(registrationFormWithoutLogin) }}
+        {{ form_row(registrationFormWithoutLogin.email) }} 
+        {{ form_row(registrationFormWithoutLogin.fname, { label: "given name" }) }} 
+        {{ form_row(registrationFormWithoutLogin.lname, { label: "surname" }) }} 
+        {{ form_row(registrationFormWithoutLogin.address, { label: "address" }) }}
+    </div>
+    <div class="reg-form">
+        {{ form_row(registrationFormWithoutLogin.agreeTerms) }}
+        <button type="submit" class="btn btn-danger">Register</button> {{ form_end(registrationFormWithoutLogin) }}
+    </div>
+
+    {# <a href="{{ path('app_login') }}">login</a>
+    <a href="{{ path('app_register') }}">register</a>
+    <a href="{{ path('app_logout') }}">logout</a> #}
+</div>
+{% endblock %}
