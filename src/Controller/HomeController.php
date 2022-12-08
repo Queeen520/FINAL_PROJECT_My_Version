@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\CourseCategory;
+use App\Entity\Course;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +16,14 @@ class HomeController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
 
-        $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
+        // $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
+        $courses = $doctrine->getRepository(Course::class)->findAll();
+
         
 
         return $this->render('home/index.html.twig', [
-            'coursecategories' => $coursecategories,
+            // 'coursecategories' => $coursecategories,
+            'courses' => $courses
         ]);
     }
 }
