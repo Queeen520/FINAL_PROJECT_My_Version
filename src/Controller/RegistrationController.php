@@ -120,11 +120,10 @@ class RegistrationController extends AbstractController
         $entityManager->flush();
 
         dd($_SESSION);
-        # $user_id ;    
         
          # send email to user with course details (optionally login details)
 
-
+        
 
 
 
