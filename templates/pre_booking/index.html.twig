@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PreBooking index{% endblock %}
+
+{% block body %}
+    <h1>PreBooking index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumberParticipants</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pre_booking in pre_bookings %}
+            <tr>
+                <td>{{ pre_booking.id }}</td>
+                <td>{{ pre_booking.numberParticipants }}</td>
+                <td>
+                    <a href="{{ path('app_pre_booking_show', {'id': pre_booking.id}) }}">show</a>
+                    <a href="{{ path('app_pre_booking_edit', {'id': pre_booking.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pre_booking_new') }}">Create new</a>
+{% endblock %}

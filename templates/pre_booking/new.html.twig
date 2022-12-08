@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PreBooking{% endblock %}
+
+{% block body %}
+    <h1>Create new PreBooking</h1>
+
+    {{ include('pre_booking/_form.html.twig') }}
+
+    <a href="{{ path('app_pre_booking_index') }}">back to list</a>
+{% endblock %}
