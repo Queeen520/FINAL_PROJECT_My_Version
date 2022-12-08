@@ -16,9 +16,6 @@ class PreBooking
     #[ORM\Column]
     private ?int $numberParticipants = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $review = null;
-
     #[ORM\ManyToOne(inversedBy: 'preBookings')]
     private ?Course $fkCourse = null;
 
@@ -38,18 +35,6 @@ class PreBooking
     public function setNumberParticipants(int $numberParticipants): self
     {
         $this->numberParticipants = $numberParticipants;
-
-        return $this;
-    }
-
-    public function getReview(): ?string
-    {
-        return $this->review;
-    }
-
-    public function setReview(?string $review): self
-    {
-        $this->review = $review;
 
         return $this;
     }

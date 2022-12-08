@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %} {% block title %} Dashboard {% endblock %}
+{%block body %}
+
+<div class="container mb-4 mt-4 p-4">
+  <h1>New Pre Bookings</h1>
+  {% for new in pre %}
+  <table class="table w-100">
+    <tbody>
+      <tr class="bg-light">
+        <th>User</th>
+        <td>Course</td>
+      </tr>
+      <tr>
+        <th>{{ new.fkUser.email }}</th>
+        <td>{{ new.fkCourse.fkCourseCategory.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  {% endfor %}
+</div>
+
+{% endblock %}
