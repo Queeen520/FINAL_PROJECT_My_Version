@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Book your First Aid Course!{%
 endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
-    
+
 
 </div>
 <div class="col d-flex flex-column h-sm-100" data-aos="fade-left" data-aos-duration="1100">
@@ -15,8 +15,8 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
             <h3 class="py-3" data-aos="fade-up" data-aos-duration="1200">Our courses</h3>
             <div class="py-3">
                 <div class="row row-cols-1 row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-xs-1 g-4">
+                    {% for course in coursecategories %}
                     <div class="col d-flex justify-content-center" data-aos="fade-down-right" data-aos-duration="1200">
-                        {% for course in coursecategories %}
                         <div class="card">
                             <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
                                 style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
@@ -25,9 +25,9 @@ endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
                                 <p class="card-text">{{course.description}}
                                 </p>
                                 <a class="btn btn-details" href="/details"><span>Details</span></a>
-                                {% endfor %}
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
                     <!--
                     <div class="col d-flex justify-content-center" data-aos="fade-down-left" data-aos-duration="1200">
