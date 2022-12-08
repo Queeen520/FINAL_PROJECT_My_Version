@@ -15,13 +15,11 @@ class HomeController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
 
-        $course1 = $doctrine->getRepository(CourseCategory::class)->findBy(['id' => '1']);
+        $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
         
-        $course2 = $doctrine->getRepository(CourseCategory::class)->findBy(['id' => '2']);
 
         return $this->render('home/index.html.twig', [
-            'course1' => $course1,
-            'course2' => $course2
+            'coursecategories' => $coursecategories,
         ]);
     }
 }
