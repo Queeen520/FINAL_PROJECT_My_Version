@@ -6,8 +6,15 @@ body %}
   <table class="table w-75">
     <tbody>
       <tr>
+        <img src="{{asset('pictures/') ~ course.fkCourseCategory.image}}" alt="image" width="200" />
+      </tr>
+      <tr>
         <th>Course:</th>
         <td>{{ course.fkCourseCategory.name }}</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>{{ course.fkCourseCategory.description}}</td>
       </tr>
       <tr>
         <th>StartTime</th>
@@ -19,11 +26,23 @@ body %}
         <th>EndTime</th>
         <td>{{ course.endTime ? course.endTime|date('Y-m-d H:i:s') : '' }}</td>
       </tr>
+      <tr>
+        <th>Price Student</th>
+        <td>{{course.fkPrice.studentPrice}} €</td>
+      </tr>
+      <tr>
+        <th>Price Business</th>
+        <td>{{course.fkPrice.businessPrice}} €</td>
+      </tr>
+      <tr>
+        <th>Price Private</th>
+        <td>{{course.fkPrice.privatePrice}} €</td>
+      </tr>
     </tbody>
   </table>
   <a class="btn btn-outline-danger" href="{{ path('app_home') }}">Go Back</a>
 </div>
 
-  <a class="btn btn-outline-warning"  href="{{ path('app_register_no_login', {'id': course.id}) }}">register</a>
+<a class="btn btn-outline-warning" href="{{ path('app_register_no_login', {'id': course.id}) }}">register</a>
 
 {% endblock %}
