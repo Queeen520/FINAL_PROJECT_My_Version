@@ -5,13 +5,17 @@
   <h1>New Pre Bookings</h1>
   {% for new in pre %}
   <table class="table w-100">
-    <tbody>
-      <tr class="bg-light">
-        <th>User</th>
-        <td>Course</td>
-      </tr>
+    <thead>
       <tr>
-        <th>{{ new.fkUser.email }}</th>
+        <th scope="col">User Name</th>
+        <th scope="col">User Mail</th>
+        <th scope="col">Course</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ new.fkUser.fname }} {{ new.fkUser.lname }}</td>
+        <td>{{ new.fkUser.email }}</td>
         <td>{{ new.fkCourse.fkCourseCategory.name }}</td>
       </tr>
     </tbody>
