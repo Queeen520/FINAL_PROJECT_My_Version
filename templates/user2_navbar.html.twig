@@ -28,16 +28,33 @@
         <a href="/course"> Courses </a>
       </li>
       <li>
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
+        <a href="/image/gallery"> Photos </a>
+        {% else %}
         <a href="/image/gallery/userView"> Photos </a>
+        {% endif %}
       </li>
     </ul>
     <ul>
+      {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
+      <li>
+        <a class="btn-signout" href="/dashboard">Dashboard</a></button>
+      </li>
+      <li>
+        <a class="btn-signout" href="{{ path('app_logout') }}">Logout</a></button>
+      </li>
+      {% elseif is_granted('ROLE_USER') %}
+      <li>
+        <a class="btn-signout" href="{{ path('app_logout') }}">Logout</a></button>
+      </li>
+      {% else %}
       <li>
         <a href="/register"> Sign-up </a>
       </li>
       <li>
         <a href="/login"> Login </a>
       </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
