@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %} {% block title %}Image Gallery{% endblock %} {%
+block body %}
+<h1>ImageGallery</h1>
+{% for pic in pictures %}
+<div class="container">
+  <tbody>
+    <tr>
+      <th>Description</th>
+      <td>{{ pic.description }}</td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td>{{ pic.image }}</td>
+      <td>
+        <img src="{{asset('pictures/') ~ pic.image}}" alt="image" width="300" />
+      </td>
+    </tr>
+  </tbody>
+</div>
+{% endfor %}
+<a href="{{ path('app_image_gallery_index') }}">back to list</a>
+
+{% endblock %}

@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+
 
 #[Route('/image/gallery')]
 class ImageGalleryController extends AbstractController
@@ -21,6 +23,17 @@ class ImageGalleryController extends AbstractController
     {
         return $this->render('image_gallery/index.html.twig', [
             'image_galleries' => $imageGalleryRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/userView', name: 'app_image_gallery_userView', methods: ['GET'])]
+    public function pictures(ManagerRegistry $doctrine): Response
+    {
+
+        $pictures = $doctrine->getRepository(ImageGallery::class)->findAll();
+
+        return $this->render('image_gallery/userView.html.twig', [
+            'pictures' => $pictures
         ]);
     }
 
