@@ -34,6 +34,9 @@ class Course
     #[ORM\OneToMany(mappedBy: 'fkCourse', targetEntity: PreBooking::class)]
     private Collection $preBookings;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $available = null;
+
     public function __construct()
     {
         $this->imageGalleries = new ArrayCollection();
@@ -149,6 +152,18 @@ class Course
                 $preBooking->setFkCourse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isAvailable(): ?string
+    {
+        return $this->available;
+    }
+
+    public function setAvailable(?string $available): self
+    {
+        $this->available = $available;
 
         return $this;
     }

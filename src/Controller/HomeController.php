@@ -3,6 +3,8 @@
 namespace App\Controller;
 use App\Entity\CourseCategory;
 use App\Entity\Course;
+use App\Entity\User;
+
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +26,17 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             // 'coursecategories' => $coursecategories,
             'courses' => $courses
+        ]);
+    }
+
+    #[Route('/about', name: 'app_about')]
+    public function about(ManagerRegistry $doctrine): Response
+    {
+        $trainer = $doctrine->getRepository(User::class)->findBy(['id'=>'3']);
+        //dd($trainer);
+        return $this->render('home/about.html.twig', [
+            'trainer' => $trainer
+
         ]);
     }
 }

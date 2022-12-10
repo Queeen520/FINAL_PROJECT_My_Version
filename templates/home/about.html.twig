@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %} {% block title %} About Page Course!{% endblock
+%} {% block body %}
+
+<div class="container">
+  <h1>Our Trainers</h1>
+  {% for x in trainer %}
+  <p>{{ x.fname }}</p>
+  <p>{{ x.lname }}</p>
+
+  {% endfor %}
+</div>
+
+{% endblock %}

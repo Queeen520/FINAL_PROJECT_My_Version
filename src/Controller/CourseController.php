@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Entity\CourseCategory;
+use App\Entity\Price;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+
 
 #[Route('/course')]
 class CourseController extends AbstractController
@@ -20,6 +24,29 @@ class CourseController extends AbstractController
             'courses' => $courseRepository->findAll(),
         ]);
     }
+
+    #####################################################################################
+    # DATA FROM COURSE , COURSE CATEGORY , PRICE
+    #####################################################################################
+
+    #[Route('/overview', name: 'app_overview', methods: ['GET'])]
+    public function showcourses(ManagerRegistry $doctrine): Response
+    {
+
+        $courses = $doctrine->getRepository(Course::class)->findAll();
+        $courseCategories = $doctrine->getRepository(CourseCategory::class)->findAll();
+        $prices = $doctrine->getRepository(Price::class)->findAll();
+
+
+        return $this->render('course/overview.html.twig', [
+            'prices' => $prices
+
+        ]);
+    }
+    
+    #####################################################################################
+    # DATA FROM COURSE , COURSE CATEGORY , PRICE ^^
+    #####################################################################################
 
     #[Route('/new', name: 'app_course_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CourseRepository $courseRepository): Response
