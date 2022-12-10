@@ -19,24 +19,47 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
         courses</h2>
     <div class="owl-carousel owl-theme">
         {% for course in courses %}
-        <div class="col d-flex flex-row justify-content-start pb-5 fade-in" style="padding-left: 20%;">
-            <div class="card">
+        <div class="col d-flex flex-row justify-content-center pb-5 fade-in">
+            <div class="card" style="width: 25rem;">
                 <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
                     style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
-                <div class="card-body" style="width: 25rem;">
+                <div class="card-body">
                     <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
-                    <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
-                    <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
-                    <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
-                    <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
+                    <p class="card-title">{{course.fkCourseCategory.description}}</p>
+                    <p class="card-title">Price at: {{course.fkPrice.studentPrice}}</p>
+                    {# <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
+                    <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5> #}
                     {# <p class="card-text">{{course.description}} #}
-                    </p>
-                    <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Details
+                        </button>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+    {% for course in courses %}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{course.fkCourseCategory.name}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 {# </div>
@@ -96,7 +119,26 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
 
 <script>
     $(document).ready(function () {
-        $(".owl-carousel").owlCarousel();
+        $(".owl-carousel").owlCarousel(
+            {
+                loop: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    480: {
+                        items: 2,
+                    },
+                    768: {
+                        items: 2,
+                    },
+                    1100: {
+                        items: 3,
+                    }
+                }
+            }
+        );
     });
 
 
