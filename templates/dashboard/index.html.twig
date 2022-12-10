@@ -1,8 +1,7 @@
-{% extends 'base.html.twig' %} {% block title %} Dashboard {% endblock %}
-{%block body %}
-
+{% extends 'base.html.twig' %} {% block title %} Dashboard {% endblock %} {%
+block body %}
 <div class="container mb-4 mt-4 p-4">
-  <h1>New Pre Bookings</h1>
+  <h1 class="mb-4 pb-4">New Pre Bookings</h1>
   {% for new in pre %}
   <table class="table w-100">
     <thead>
@@ -10,6 +9,7 @@
         <th scope="col">User Name</th>
         <th scope="col">User Mail</th>
         <th scope="col">Course</th>
+        <th scope="col">Course Date and Time</th>
       </tr>
     </thead>
     <tbody>
@@ -17,10 +17,21 @@
         <td>{{ new.fkUser.fname }} {{ new.fkUser.lname }}</td>
         <td>{{ new.fkUser.email }}</td>
         <td>{{ new.fkCourse.fkCourseCategory.name }}</td>
+        <td>
+          {{ new.fkCourse.startTime | date() }} -
+          {{ new.fkCourse.endTime | date() }}
+        </td>
       </tr>
     </tbody>
   </table>
   {% endfor %}
 </div>
 
+<div class="container">
+  <a href="{{ path('app_course_index') }}">Show Course CRUD</a> <br />
+  <a href="{{ path('app_course_category_index') }}">Show Course Category CRUD</a
+  ><br />
+  <a href="{{ path('app_user') }}">Show User CRUD</a> <br />
+  <a href="{{ path('app_price_index') }}">Show Price CRUD</a> <br />
+</div>
 {% endblock %}
