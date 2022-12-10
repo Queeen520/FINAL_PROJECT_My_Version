@@ -42,6 +42,6 @@ class MailerController extends AbstractController
             'user'=>$user
             ]);
 
-        // ...
+        
     }
 }
