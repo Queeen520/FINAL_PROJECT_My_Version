@@ -27,11 +27,13 @@ block body %}
             href="{{ path('app_course_show', { id: course.id }) }}"
             >Show</a
           >
+          {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
           <a
             class="btn btn-outline-dark ms-2"
             href="{{ path('app_course_edit', { id: course.id }) }}"
             >Update</a
           >
+          {% endif %}
         </td>
       </tr>
       {% else %}
@@ -41,8 +43,10 @@ block body %}
       {% endfor %}
     </tbody>
   </table>
+
+  {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
   <a class="btn btn-outline-success" href="{{ path('app_course_new') }}"
-    >Create Course</a
-  >
+    >Create Course</a>
+  {% endif %}
 </div>
 {% endblock %}

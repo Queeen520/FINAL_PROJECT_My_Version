@@ -3,11 +3,14 @@
 {% block title %}Price index{% endblock %}
 
 {% block body %}
+<div class="container p-4 w-100">
+
+
     <h1>Price index</h1>
 
-    <table class="table">
+    <table class="table p-2">
         <thead>
-            <tr>
+            <tr class="bg-light border-bottom border-secondary">
                 <th>Id</th>
                 <th>StudentPrice</th>
                 <th>BusinessPrice</th>
@@ -16,24 +19,26 @@
             </tr>
         </thead>
         <tbody>
-        {% for price in prices %}
+            {% for price in prices %}
             <tr>
                 <td>{{ price.id }}</td>
                 <td>{{ price.studentPrice }}</td>
                 <td>{{ price.businessPrice }}</td>
                 <td>{{ price.privatePrice }}</td>
                 <td>
-                    <a href="{{ path('app_price_show', {'id': price.id}) }}">show</a>
-                    <a href="{{ path('app_price_edit', {'id': price.id}) }}">edit</a>
+                    <a class="btn btn-outline-dark me-2" href="{{ path('app_price_show', {'id': price.id}) }}">show</a>
+                    <a class="btn btn-outline-dark ms-2" href="{{ path('app_price_edit', {'id': price.id}) }}">edit</a>
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_price_new') }}">Create new</a>
+    <a class="btn btn-outline-success" href="{{ path('app_price_new') }}">Create new</a>
+
+</div>
 {% endblock %}

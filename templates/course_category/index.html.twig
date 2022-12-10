@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %} {% block title %}Course Categories {% endblock %}
 {% block body %}
-<div class="container p-4">
+<div class="container p-4 w-100">
   <h1>Course Categories</h1>
 
-  <table class="table">
+  <table class="table p-2">
     <thead>
-      <tr>
+      <tr class="bg-light border-bottom border-secondary">
         <th>Id</th>
         <th>Name</th>
         <th>Description</th>
@@ -28,12 +28,14 @@
         <td>
           <span class="col">
             <a
+            class="btn btn-outline-dark me-2"
               href="{{
                 path('app_course_category_show', { id: course_category.id })
               }}"
               >Show</a
             >
             <a
+            class="btn btn-outline-dark ms-2"
               href="{{
                 path('app_course_category_edit', { id: course_category.id })
               }}"
