@@ -3,58 +3,40 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
 
 
 <div id="hero">
-    <div class="hero-container">
-        <div class="left-part px-5" data-aos="fade-up" data-aos-duration="1750">
-            <h2>Only 1 in 20 people feels knowledgeable and confident in using First Aid.</h2>
-            <h4>First Aid can save your life and the lives of your loved ones.</h4>
-            <h5>In case of doubt, it's an emergency case. Learn First Aid now!</h5>
-            <button class="learn-more"><a href="/course">Learn more</a></button>
-        </div>
-        <div class="right-part" data-aos="fade-left" data-aos-duration="1750">
-            <img class="hero-img" src="{{ asset('pictures/hero.png')}}" alt="test">
-        </div>
+    <div class="left-part px-5" data-aos="fade-up" data-aos-duration="1750">
+        <h2>Only 1 in 20 people feels knowledgeable and confident in using First Aid.</h2>
+        <h4>First Aid can save your life and the lives of your loved ones.</h4>
+        <h5>In case of doubt, it's an emergency case. Learn First Aid now!</h5>
+        <button class="learn-more"><a href="/course">Learn more</a></button>
+    </div>
+    <div class="right-part" data-aos="fade-left" data-aos-duration="1750">
+        <img class="hero-img" src="{{ asset('pictures/hero.png')}}" alt="test">
     </div>
 </div>
 <div id="courses">
     <h2 class="title-courses fade-in d-flex flex-row justify-content-center pb-5"
-        style="font-weight: 400; padding-top: 15%;" data-aos="fade" data-aos-duration="2000" data-aos-offset="500">Our
+        style="font-weight: 400; padding-top: 15%;" data-aos="fade" data-aos-duration="2000" data-aos-offset="300">Our
         courses</h2>
-    {% for course in courses %}
-    <div class="col d-flex flex-row justify-content-start pb-5" style="padding-left: 20%;" data-aos="fade-right"
-        data-aos-duration="1200" data-aos-offset="350" data-aos-easing="ease-in-out-sine">
-        <div class="card">
-            <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
-                style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
-            <div class="card-body" style="width: 25rem;">
-                <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
-                <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
-                <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
-                <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
-                <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
-                {# <p class="card-text">{{course.description}} #}
-                </p>
-                <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
+    <div class="owl-carousel owl-theme">
+        {% for course in courses %}
+        <div class="col d-flex flex-row justify-content-start pb-5 fade-in" style="padding-left: 20%;">
+            <div class="card">
+                <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
+                    style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
+                <div class="card-body" style="width: 25rem;">
+                    <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
+                    <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
+                    <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
+                    <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
+                    <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
+                    {# <p class="card-text">{{course.description}} #}
+                    </p>
+                    <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    <div class="col d-flex flex-row justify-content-end pb-5" style="padding-right: 20%;" data-aos="fade-left"
-        data-aos-duration="1200" data-aos-offset="350" data-aos-easing="ease-in-out-sine">
-        <div class="card">
-            <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
-                style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
-            <div class="card-body" style="width: 25rem;">
-                <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
-                <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
-                <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
-                <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
-                <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
-                {# <p class="card-text">{{course.description}} #}
-                </p>
-                <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
 </div>
 
 {# </div>
@@ -111,4 +93,32 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
 </div>
 </div>
 </div> #}
+
+<script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel();
+    });
+
+
+
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 1, rootMargin: "0px 30px 0px 30px" };
+
+
+    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    })
+
+</script>
 {% endblock %}

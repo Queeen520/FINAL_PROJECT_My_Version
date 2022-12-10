@@ -1,60 +1,55 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init();
+    AOS.init();
 </script>
 <nav class="menu-container">
-  <!-- burger menu -->
-  <input type="checkbox" aria-label="Toggle menu" />
-  <span></span>
-  <span></span>
-  <span></span>
+    <!-- burger menu -->
+    <input type="checkbox" aria-label="Toggle menu" />
+    <span></span>
+    <span></span>
+    <span></span>
 
-  <!-- logo -->
-  <a href="" class="menu-logo">
-    <img src="{{ asset('pictures/logo.png') }}" alt="First Aid" />
-  </a>
-
-  <!-- menu items -->
-  <div class="menu">
-    <ul>
-      <li>
-        <a href="/home"> Home </a>
-      </li>
-      <li>
-        <a href="#"> About </a>
-      </li>
-      <li>
-        <a href="/course"> Courses </a>
-      </li>
-      <li>
-        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
-        <a href="/image/gallery"> Photos </a>
-        {% else %}
-        <a href="/image/gallery/userView"> Photos </a>
-        {% endif %}
-      </li>
-    </ul>
-    <ul>
-      {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
-      <li>
-        <a class="btn-signout" href="/dashboard">Dashboard</a></button>
-      </li>
-      <li>
-        <a class="btn-signout" href="{{ path('app_logout') }}">Logout</a></button>
-      </li>
-      {% elseif is_granted('ROLE_USER') %}
-      <li>
-        <a class="btn-signout" href="{{ path('app_logout') }}">Logout</a></button>
-      </li>
-      {% else %}
-      <li>
-        <a href="/register"> Sign-up </a>
-      </li>
-      <li>
-        <a href="/login"> Login </a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
+    <!-- menu items -->
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="#hero"> Home </a>
+            </li>
+            <li>
+                <a href="#about"> About </a>
+            </li>
+            <li>
+                <a href="/course"> Courses </a>
+            </li>
+            <li>
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
+                <a href="/image/gallery"> Photos </a>
+                {% else %}
+                <a href="/image/gallery/userView"> Photos </a>
+                {% endif %}
+            </li>
+        </ul>
+        <ul>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
+            <li>
+                <a class="btn-signout" href="/dashboard">Dashboard</a></button>
+            </li>
+            <li>
+                <a class="btn-signout" href="{{ path('app_logout') }}">Logout</a></button>
+            </li>
+            {% elseif is_granted('ROLE_USER') %}
+            <li>
+                <a class="btn-signout" href="{{ path('app_logout') }}">Logout</a></button>
+            </li>
+            {% else %}
+            <li>
+                <a href="/register"> Sign-up </a>
+            </li>
+            <li>
+                <a href="/login"> Login </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
 </nav>
