@@ -1,32 +1,37 @@
 {% extends 'base.html.twig' %} {% block title %}Course index{% endblock %} {%
 block body %}
-<div class="container">
-  <h1>Course index</h1>
-
-  <table class="table">
+<div class="container p-4 w-100">
+  <h1 class="mb-5">Courses Overview</h1>
+  <table class="table p-2">
     <thead>
-      <tr>
-        <th>Id</th>
-        <th>StartTime</th>
-        <th>EndTime</th>
-        <th>category</th>
-        <th>actions</th>
+      <tr class="bg-light border-bottom border-secondary">
+        <th>Category</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       {% for course in courses %}
       <tr>
-        <td>{{ course.id }}</td>
-        <td>
-          {{ course.startTime ? course.startTime|date('Y-m-d H:i:s') : '' }}
-        </td>
-        <td>{{ course.endTime ? course.endTime|date('Y-m-d H:i:s') : '' }}</td>
         <td>
           {{ course.fkCourseCategory ? course.fkCourseCategory.name : "" }}
         </td>
         <td>
-          <a href="{{ path('app_course_show', { id: course.id }) }}">show</a>
-          <a href="{{ path('app_course_edit', { id: course.id }) }}">edit</a>
+          {{ course.startTime ? course.startTime|date('d.M.Y H:i') : '' }}
+        </td>
+        <td>{{ course.endTime ? course.endTime|date('d.M.Y H:i') : '' }}</td>
+        <td>
+          <a
+            class="btn btn-outline-dark me-2"
+            href="{{ path('app_course_show', { id: course.id }) }}"
+            >Show</a
+          >
+          <a
+            class="btn btn-outline-dark ms-2"
+            href="{{ path('app_course_edit', { id: course.id }) }}"
+            >Update</a
+          >
         </td>
       </tr>
       {% else %}
@@ -36,7 +41,8 @@ block body %}
       {% endfor %}
     </tbody>
   </table>
-
-  <a href="{{ path('app_course_new') }}">Create new</a>
+  <a class="btn btn-outline-success" href="{{ path('app_course_new') }}"
+    >Create Course</a
+  >
 </div>
 {% endblock %}
