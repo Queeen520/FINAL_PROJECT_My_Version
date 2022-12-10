@@ -16,7 +16,45 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
     </div>
 </div>
 <div id="courses">
-
+    <h2 class="title-courses fade-in d-flex flex-row justify-content-center pb-5"
+        style="font-weight: 400; padding-top: 15%;" data-aos="fade" data-aos-duration="2000" data-aos-offset="500">Our
+        courses</h2>
+    {% for course in courses %}
+    <div class="col d-flex flex-row justify-content-start pb-5" style="padding-left: 20%;" data-aos="fade-right"
+        data-aos-duration="1200" data-aos-offset="350" data-aos-easing="ease-in-out-sine">
+        <div class="card">
+            <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
+                style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
+            <div class="card-body" style="width: 25rem;">
+                <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
+                <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
+                <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
+                <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
+                <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
+                {# <p class="card-text">{{course.description}} #}
+                </p>
+                <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="col d-flex flex-row justify-content-end pb-5" style="padding-right: 20%;" data-aos="fade-left"
+        data-aos-duration="1200" data-aos-offset="350" data-aos-easing="ease-in-out-sine">
+        <div class="card">
+            <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
+                style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
+            <div class="card-body" style="width: 25rem;">
+                <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
+                <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
+                <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
+                <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
+                <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
+                {# <p class="card-text">{{course.description}} #}
+                </p>
+                <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 {# </div>
@@ -45,25 +83,6 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
                                 <p class="card-text">{{course.description}}
                                 </p>
                                 <a class="btn btn-details" href="/course/{id}"><span>Details</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %} #}
-                    {# {% for course in courses %}
-                    <div class="col d-flex flex-row justify-content-center" data-aos="fade-down-right"
-                        data-aos-duration="1200">
-                        <div class="card">
-                            <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
-                                style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
-                            <div class="card-body" style="width: 25rem;">
-                                <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
-                                <h5 class="card-title">{{course.fkCourseCategory.description}}</h5>
-                                <h5 class="card-title">Price at: {{course.fkPrice.studentPrice}}</h5>
-                                <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
-                                <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5>
-                                <p class="card-text">{{course.description}}
-                                </p>
-                                <a class="btn btn-details" href="/course/{{course.id}}"><span>Details</span></a>
                             </div>
                         </div>
                     </div>

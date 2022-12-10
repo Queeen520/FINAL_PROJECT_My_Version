@@ -109,7 +109,7 @@ body {
 /* Hero Section */
 
 #hero {
-    height: 75vh;
+    height: 70vh;
     background-color: var(--cherry-blossom-pink);
 }
 
@@ -164,9 +164,11 @@ body {
 
 #courses {
     height: 95vh;
-    background: url(./wave.svg);
+    background: url(./wave\ \(1\).svg);
     background-repeat: no-repeat;
 }
+
+
 
 
 
