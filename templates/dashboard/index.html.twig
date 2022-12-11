@@ -1,15 +1,23 @@
 {% extends 'base.html.twig' %} {% block title %} Dashboard {% endblock %} {%
 block body %}
+<div class="container d-flex justify-content-between mt-4">
+  <a href="{{ path('app_course_index') }}">Show Course CRUD</a> <br />
+  <a href="{{ path('app_course_category_index') }}">Show Course Category CRUD</a
+  ><br />
+  <a href="{{ path('app_price_index') }}">Show Price CRUD</a> <br />
+  <a href="{{ path('app_image_gallery_index') }}">Show Images CRUD</a> <br />
+</div>
 <div class="container mb-4 mt-4 p-4">
-  <h1 class="mb-4 pb-4">New Pre Bookings</h1>
+  <h1 class="mb-2">New Pre Bookings - Please Check & Confirme</h1>
   {% for new in pre %}
   <table class="table w-100">
     <thead>
-      <tr>
+      <tr class="bg-light">
         <th scope="col">User Name</th>
         <th scope="col">User Mail</th>
         <th scope="col">Course</th>
-        <th scope="col">Course Date and Time</th>
+        <th scope="col">Date and Time</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -18,19 +26,19 @@ block body %}
         <td>{{ new.fkUser.email }}</td>
         <td>{{ new.fkCourse.fkCourseCategory.name }}</td>
         <td>
-          {{ new.fkCourse.startTime | date() }} -
-          {{ new.fkCourse.endTime | date() }}
+          {{ new.fkCourse.startTime|date('d.M.Y H:i') }} <br />
+          {{ new.fkCourse.endTime|date('d.M.Y H:i') }}
+        </td>
+        <td>
+          <a class="btn btn-outline-success"
+            >DONE <i class="bi bi-check-square-fill"></i
+          ></a>
         </td>
       </tr>
+      <br />
     </tbody>
   </table>
   {% endfor %}
 </div>
 
-<div class="container">
-  <a href="{{ path('app_course_index') }}">Show Course CRUD</a> <br />
-  <a href="{{ path('app_course_category_index') }}">Show Course Category CRUD</a
-  ><br />
-  <a href="{{ path('app_price_index') }}">Show Price CRUD</a> <br />
-</div>
 {% endblock %}

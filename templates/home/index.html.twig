@@ -13,12 +13,16 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
         <img class="hero-img" src="{{ asset('pictures/hero.png')}}" alt="test">
     </div>
 </div>
+
+
 <div id="courses">
     <h2 class="title-courses fade-in d-flex flex-row justify-content-center pb-5"
         style="font-weight: 400; padding-top: 15%;" data-aos="fade" data-aos-duration="2000" data-aos-offset="300">Our
         courses</h2>
     <div class="owl-carousel owl-theme">
         {% for course in courses %}
+        
+        
         <div class="col d-flex flex-row justify-content-center pb-5 fade-in">
             <div class="card" style="width: 25rem;">
                 <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
@@ -30,11 +34,21 @@ endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
                     {# <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
                     <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5> #}
                     {# <p class="card-text">{{course.description}} #}
-                        <!-- Button trigger modal -->
+                       
+                    {% if course.available == 1  %}
+                    <p class="card-title bg-success">Pre-Booking Possible</p>
+                     <!-- Button trigger modal -->
+                     <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                     data-bs-target="#exampleModal">
+                     Details
+                     </button>                    
+                     {% else %}
+                     <!-- Button trigger modal -->
                         <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Details
+                        data-bs-target="#exampleModal">
+                        Details
                         </button>
+                    {% endif %}
                 </div>
             </div>
         </div>
