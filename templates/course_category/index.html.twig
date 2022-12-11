@@ -6,36 +6,34 @@
   <table class="table p-2">
     <thead>
       <tr class="bg-light border-bottom border-secondary">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th class="w-25">Name</th>
+        <th class="w-50">Description</th>
         <th>Image</th>
-        <th>actions</th>
+        <th class="w-25">Actions</th>
       </tr>
     </thead>
     <tbody>
       {% for course_category in course_categories %}
       <tr>
-        <td>{{ course_category.id }}</td>
-        <td>{{ course_category.name }}</td>
-        <td>{{ course_category.description }}</td>
+        <td class="w-25">{{ course_category.name }}</td>
+        <td class="w-50">{{ course_category.description }}</td>
         <td>
           <img
             src="{{asset('pictures/') ~ course_category.image}}"
             alt="image"
-            width="50" />
+            width="100" />
         </td>
-        <td>
+        <td class="w-25">
           <span class="col">
             <a
-            class="btn btn-outline-dark me-2"
+              class="btn btn-outline-dark me-2"
               href="{{
                 path('app_course_category_show', { id: course_category.id })
               }}"
               >Show</a
             >
             <a
-            class="btn btn-outline-dark ms-2"
+              class="btn btn-outline-dark ms-2"
               href="{{
                 path('app_course_category_edit', { id: course_category.id })
               }}"

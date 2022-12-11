@@ -4,6 +4,10 @@ namespace App\Controller;
 
 
 use App\Entity\PreBooking;
+use App\Entity\Course;
+use App\Entity\CourseCategory;
+
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,11 +21,14 @@ class DashboardController extends AbstractController
     {
 
         $pre = $doctrine->getRepository(PreBooking::class)->findAll();
+        $course = $doctrine->getRepository(Course::class)->findAll();
 
-        //dd($pre);
+
+        //dd($course);
 
         return $this->render('dashboard/index.html.twig', [
-            'pre' => $pre
+            'pre' => $pre,
+            'course' => $course
         ]);
     }
 }

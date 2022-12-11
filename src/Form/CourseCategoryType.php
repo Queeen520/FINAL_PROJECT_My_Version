@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 
 
@@ -20,7 +22,7 @@ class CourseCategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ["attr" => ["class"=>"form-control mb-2"]])
-            ->add('description', TextType::class, ["attr" => ["class"=>"form-control mb-2"]])
+            ->add('description', TextareaType::class, ["attr" => ["class"=>"form-control mb-2"]])
 
             // build the form using the file type input
             ->add('image', FileType::class, [
