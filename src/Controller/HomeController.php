@@ -20,7 +20,6 @@ class HomeController extends AbstractController
 
         $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
         $courses = $doctrine->getRepository(Course::class)->findAll();  
-        $true = $doctrine->getRepository(Course::class)->findBy(['available' => 'true']);
         
         //dd($true);
 
@@ -29,7 +28,6 @@ class HomeController extends AbstractController
             // 'coursecategories' => $coursecategories,
             'courses' => $courses,
             'coursecategories' => $coursecategories,
-            'true' => $true
         ]);
     }
 

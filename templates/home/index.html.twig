@@ -1,61 +1,47 @@
 {% extends 'base.html.twig' %} {% block title %}Book your First Aid Course!{%
 endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
 
-
 <div id="hero">
-    <div class="left-part px-5" data-aos="fade-up" data-aos-duration="1750">
-        <h2>Only 1 in 20 people feels knowledgeable and confident in using First Aid.</h2>
-        <h4>First Aid can save your life and the lives of your loved ones.</h4>
-        <h5>In case of doubt, it's an emergency case. Learn First Aid now!</h5>
-        <button class="learn-more"><a href="/course">Learn more</a></button>
-    </div>
-    <div class="right-part" data-aos="fade-left" data-aos-duration="1750">
-        <img class="hero-img" src="{{ asset('pictures/hero.png')}}" alt="test">
-    </div>
+  <div class="left-part px-5" data-aos="fade-up" data-aos-duration="1750">
+    <h2>
+      Only 1 in 20 people feels knowledgeable and confident in using First Aid.
+    </h2>
+    <h4>First Aid can save your life and the lives of your loved ones.</h4>
+    <h5>In case of doubt, it's an emergency case. Learn First Aid now!</h5>
+    <button class="learn-more"><a href="/course">Learn more</a></button>
+  </div>
+  <div class="right-part" data-aos="fade-left" data-aos-duration="1750">
+    <img class="hero-img" src="{{ asset('pictures/hero.png') }}" alt="test" />
+  </div>
 </div>
-
 
 <div id="courses">
-    <h2 class="title-courses fade-in d-flex flex-row justify-content-center pb-5"
-        style="font-weight: 400; padding-top: 15%;" data-aos="fade" data-aos-duration="2000" data-aos-offset="300">Our
-        courses</h2>
-    <div class="owl-carousel owl-theme">
-        {% for course in courses %}
-        
-        
-        <div class="col d-flex flex-row justify-content-center pb-5 fade-in">
-            <div class="card" style="width: 25rem;">
-                <img src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
-                    style="height: 10rem;" class="card-img-top" alt="two people doing reanimation">
-                <div class="card-body">
-                    <h5 class="card-title">{{course.fkCourseCategory.name}}</h5>
-                    <p class="card-title">{{course.fkCourseCategory.description}}</p>
-                    <p class="card-title">Price at: {{course.fkPrice.studentPrice}}</p>
-                    {# <h5 class="card-title">Starttime: {{course.startTime|date('Y-m-d')}}</h5>
-                    <h5 class="card-title">Endtime: {{course.endTime|date('Y-m-d')}}</h5> #}
-                    {# <p class="card-text">{{course.description}} #}
-                       
-                    {% if course.available == 1  %}
-                    <p class="card-title bg-success">Pre-Booking Possible</p>
-                     <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                     data-bs-target="#exampleModal">
-                     Details
-                     </button>                    
-                     {% else %}
-                     <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        Details
-                        </button>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+  <h2
+    class="title-courses fade-in d-flex flex-row justify-content-center pb-5"
+    style="font-weight: 400; padding-top: 15%"
+    data-aos="fade"
+    data-aos-duration="2000"
+    data-aos-offset="300">
+    Our courses
+  </h2>
+
+  {% for c in coursecategories %}
+
+  <div class="col d-flex flex-row justify-content-center pb-5 fade-in">
+    <div class="card" style="width: 25rem">
+      <img
+        src="https://www.erstehilfemitherz.at/wp-content/uploads/2020/08/first-aid-training-cpr.jpg"
+        style="height: 10rem"
+        class="card-img-top"
+        alt="two people doing reanimation" />
+      <div class="card-body">
+        <h5 class="card-title">{{ c.name }}</h5>
+        <p class="card-title">{{ c.description }}</p>
+        <p class="card-title">Price at:</p>
+      </div>
     </div>
+  </div>
+  {% endfor %}
 </div>
 
-
-</script>
 {% endblock %}
