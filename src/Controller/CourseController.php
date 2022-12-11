@@ -39,6 +39,8 @@ class CourseController extends AbstractController
 
 
         return $this->render('course/overview.html.twig', [
+            'prices' => $prices,
+            'courseCategories' => $courseCategories,
             'prices' => $prices
 
         ]);

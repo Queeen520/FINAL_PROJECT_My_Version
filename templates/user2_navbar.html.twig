@@ -20,7 +20,7 @@
                 <a href="#about"> About </a>
             </li>
             <li>
-                <a href="/course"> Courses </a>
+                <a href="{{ path('app_overview') }}"> Courses </a>
             </li>
             <li>
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}

@@ -1,21 +1,27 @@
-{% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block body %} {% include 'user_navbar.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block
+body %} {% include 'user_navbar.html.twig' %}
 <div class="container">
-    <h1 class="d-flex justify-content-center">Register</h1>
-
+  <h1 class="d-flex justify-content-center">Register</h1>
+  <div
+    class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
     <div class="reg-form">
-        {{ form_start(registrationFormWithoutLogin) }}
-        {{ form_row(registrationFormWithoutLogin.email) }} 
-        {{ form_row(registrationFormWithoutLogin.fname, { label: "given name" }) }} 
-        {{ form_row(registrationFormWithoutLogin.lname, { label: "surname" }) }} 
-        {{ form_row(registrationFormWithoutLogin.address, { label: "address" }) }}
+      {{ form_start(registrationFormWithoutLogin) }}
+      {{ form_row(registrationFormWithoutLogin.email) }}
+      {{
+        form_row(registrationFormWithoutLogin.fname, { label: "First Name" })
+      }}
+      {{ form_row(registrationFormWithoutLogin.lname, { label: "Surname" }) }}
+      {{ form_row(registrationFormWithoutLogin.address, { label: "Address" }) }}
     </div>
     <div class="reg-form">
-        {{ form_row(registrationFormWithoutLogin.agreeTerms) }}
-        <button type="submit" class="btn btn-danger">Register</button> {{ form_end(registrationFormWithoutLogin) }}
+      {{ form_row(registrationFormWithoutLogin.agreeTerms) }}
+      <button type="submit" class="btn btn-danger">Register</button>
+      {{ form_end(registrationFormWithoutLogin) }}
     </div>
-
-    {# <a href="{{ path('app_login') }}">login</a>
-    <a href="{{ path('app_register') }}">register</a>
-    <a href="{{ path('app_logout') }}">logout</a> #}
+  </div>
+  <div class="container text-center mb-4">
+    <p>Already have an account?</p>
+    <a href="{{ path('app_login') }}">Please Login</a>
+  </div>
 </div>
 {% endblock %}

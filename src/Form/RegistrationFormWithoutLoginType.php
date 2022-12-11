@@ -18,11 +18,16 @@ class RegistrationFormWithoutLoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fname', TextType::class, ["attr" => ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your given name'] ])           
-            ->add('lname', TextType::class, ["attr" => ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your surname'] ])           
-            ->add('email', TextType::class, ["attr" => ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your email'] ])
-            ->add('address', TextType::class, ["attr" => ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your address (City, Street, Number)'] ])
-            ->add('agreeTerms', CheckboxType::class, ['attr' => ['class' => 'd-flex flex-row align-items-center my-0'],
+            ->add('fname', TextType::class, ["attr" => 
+            ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your name', 'label' => 'name']])           
+            ->add('lname', TextType::class, ["attr" => 
+            ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your surname'] ])           
+            ->add('email', TextType::class, ["attr" => 
+            ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your email'] ])
+            ->add('address', TextType::class, ["attr" => 
+            ['class' => 'form-control my-2 w-100', 'placeholder' => 'Please enter your address (City, Street, Number)'] ])
+            ->add('agreeTerms', CheckboxType::class, ['attr' => 
+            ['class' => 'd-flex flex-row align-items-center my-0'],
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
