@@ -1,39 +1,57 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}ImageGallery index{% endblock %}
-
+{% extends 'base.html.twig' %} {% block title %}ImageGallery index{% endblock %}
 {% block body %}
-    <h1>ImageGallery index</h1>
-
+<div class="container p-4 w-100">
+  <h1>Image Gallery</h1>
+  <div
+    class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <th>Image Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for image_gallery in image_galleries %}
-            <tr>
-                <td>{{ image_gallery.id }}</td>
-                <td>{{ image_gallery.description }}</td>
-                <td>{{ image_gallery.image }}</td>
-                <td><img src="{{asset('pictures/') ~ image_gallery.image}}" alt="image" width="300" /></td>
+        <tr>
+          <td>{{ image_gallery.image }}</td>
+          <td>{{ image_gallery.description }}</td>
+          <td>
+            <img
+              src="{{asset('pictures/') ~ image_gallery.image}}"
+              alt="image"
+              width="150" />
+          </td>
 
-                <td>
-                    <a href="{{ path('app_image_gallery_show', {'id': image_gallery.id}) }}">show</a>
-                    <a href="{{ path('app_image_gallery_edit', {'id': image_gallery.id}) }}">edit</a>
-                </td>
-            </tr>
+          <td>
+            <a
+              class="btn btn-outline-secondary"
+              href="{{
+                path('app_image_gallery_show', { id: image_gallery.id })
+              }}"
+              >Show</a
+            >
+            <a
+              class="btn btn-outline-secondary"
+              href="{{
+                path('app_image_gallery_edit', { id: image_gallery.id })
+              }}"
+              >Edit</a
+            >
+          </td>
+        </tr>
         {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+        <tr>
+          <td colspan="4">no records found</td>
+        </tr>
         {% endfor %}
-        </tbody>
+      </tbody>
     </table>
+  </div>
 
-    <a href="{{ path('app_image_gallery_new') }}">Create new</a>
+  <a class="btn btn-outline-success" href="{{ path('app_image_gallery_new') }}"
+    >Create New</a
+  >
+</div>
 {% endblock %}
