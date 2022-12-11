@@ -8,6 +8,7 @@ block body %}
         <th>Category</th>
         <th>Start</th>
         <th>End</th>
+        <th>Available</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -21,6 +22,11 @@ block body %}
           {{ course.startTime ? course.startTime|date('d.M.Y H:i') : '' }}
         </td>
         <td>{{ course.endTime ? course.endTime|date('d.M.Y H:i') : '' }}</td>
+        {% if course.available == 1 %}
+        <td class="text-success">YES</td>
+        {% else %} }
+        <td class="text-danger">NO</td>
+        {% endif %}
         <td>
           <a
             class="btn btn-outline-dark me-2"
@@ -46,7 +52,8 @@ block body %}
 
   {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
   <a class="btn btn-outline-success" href="{{ path('app_course_new') }}"
-    >Create Course</a>
+    >Create Course</a
+  >
   {% endif %}
 </div>
 {% endblock %}

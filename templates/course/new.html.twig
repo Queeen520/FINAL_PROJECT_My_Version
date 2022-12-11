@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %} {% block title %}New Course{% endblock %} {%
 block body %}
-<div class="container">
+<div
+  class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
   <h1>Create new Course</h1>
 
   {{ include("course/_form.html.twig") }}
-
-  <a href="{{ path('app_course_index') }}" class="btn btn-outline-danger">back to list</a>
+</div>
+<div class="container mb-4 mt-4 p-4">
+  <a href="{{ path('app_course_index') }}" class="btn btn-outline-danger"
+    >Back</a
+  >
 </div>
 {% endblock %}

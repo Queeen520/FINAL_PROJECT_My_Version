@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Edit Course{% endblock %} {%
+block body %}
+<div
+  class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
+  <h1>Edit Course</h1>
+  {{ include("course/_form.html.twig", { button_label: "Update" }) }}
 
-{% block title %}Edit Course{% endblock %}
-
-{% block body %}
-    <h1>Edit Course</h1>
-
-    {{ include('course/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_course_index') }}">back to list</a>
-
-    {{ include('course/_delete_form.html.twig') }}
+  {{ include("course/_delete_form.html.twig", { button_label: "Delete" }) }}
+</div>
+<div class="container mb-4 mt-4 p-4">
+  <a class="btn btn-outline-secondary" href="{{ path('app_course_index') }}"
+    >BACK</a
+  >
+</div>
 {% endblock %}

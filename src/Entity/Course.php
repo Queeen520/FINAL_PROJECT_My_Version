@@ -156,12 +156,12 @@ class Course
         return $this;
     }
 
-    public function isAvailable(): ?string
+    public function isAvailable(): ?bool
     {
         return $this->available;
     }
 
-    public function setAvailable(?string $available): self
+    public function setAvailable(?bool $available): self
     {
         $this->available = $available;
 

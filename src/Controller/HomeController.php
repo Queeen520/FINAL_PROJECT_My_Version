@@ -18,14 +18,18 @@ class HomeController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
 
-        // $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
-        $courses = $doctrine->getRepository(Course::class)->findAll();
-
+        $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
+        $courses = $doctrine->getRepository(Course::class)->findAll();  
+        $true = $doctrine->getRepository(Course::class)->findBy(['available' => 'true']);
         
+        //dd($true);
 
+        //dd($courses);
         return $this->render('home/index.html.twig', [
             // 'coursecategories' => $coursecategories,
-            'courses' => $courses
+            'courses' => $courses,
+            'coursecategories' => $coursecategories,
+            'true' => $true
         ]);
     }
 
@@ -35,7 +39,8 @@ class HomeController extends AbstractController
         $trainer = $doctrine->getRepository(User::class)->findBy(['id'=>'3']);
         //dd($trainer);
         return $this->render('home/about.html.twig', [
-            'trainer' => $trainer
+            'trainer' => $trainer,
+            
 
         ]);
     }

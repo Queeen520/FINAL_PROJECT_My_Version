@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %} {% block title %}Course{% endblock %} {% block
 body %}
-<div class="container">
+<div class="container mb-4 mt-4 p-4">
   <h1>Overview</h1>
 
-  <table class="table w-75">
+  <table class="table w-100">
     <tbody>
       <tr>
-        <img src="{{asset('pictures/') ~ course.fkCourseCategory.image}}" alt="image" width="200" />
+        <img
+          src="{{asset('pictures/') ~ course.fkCourseCategory.image}}"
+          alt="image"
+          width="150" />
       </tr>
       <tr>
         <th>Course:</th>
@@ -14,7 +17,7 @@ body %}
       </tr>
       <tr>
         <th>Description</th>
-        <td>{{ course.fkCourseCategory.description}}</td>
+        <td>{{ course.fkCourseCategory.description }}</td>
       </tr>
       <tr>
         <th>StartTime</th>
@@ -28,21 +31,21 @@ body %}
       </tr>
       <tr>
         <th>Price Student</th>
-        <td>{{course.fkPrice.studentPrice}} €</td>
+        <td>{{ course.fkPrice.studentPrice }} €</td>
       </tr>
       <tr>
         <th>Price Business</th>
-        <td>{{course.fkPrice.businessPrice}} €</td>
+        <td>{{ course.fkPrice.businessPrice }} €</td>
       </tr>
       <tr>
         <th>Price Private</th>
-        <td>{{course.fkPrice.privatePrice}} €</td>
+        <td>{{ course.fkPrice.privatePrice }} €</td>
       </tr>
     </tbody>
   </table>
-  <a class="btn btn-outline-danger" href="{{ path('app_home') }}">Go Back</a>
+  <a class="btn btn-outline-danger" href="{{ path('app_course_index') }}"
+    >Go Back</a
+  >
 </div>
-
-<a class="btn btn-outline-warning" href="{{ path('app_register_no_login', {'id': course.id}) }}">register</a>
 
 {% endblock %}
