@@ -1,35 +1,34 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}PreBooking index{% endblock %}
-
+{% extends 'base.html.twig' %} {% block title %}PreBooking index{% endblock %}
 {% block body %}
-    <h1>PreBooking index</h1>
-
+<div class="container">
+  <h1>PreBooking Index</h1>
+  <div
+    class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NumberParticipants</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <th>Number Participants</th>
+          <th>User E-Mail</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for pre_booking in pre_bookings %}
-            <tr>
-                <td>{{ pre_booking.id }}</td>
-                <td>{{ pre_booking.numberParticipants }}</td>
-                <td>
-                    <a href="{{ path('app_pre_booking_show', {'id': pre_booking.id}) }}">show</a>
-                    <a href="{{ path('app_pre_booking_edit', {'id': pre_booking.id}) }}">edit</a>
-                </td>
-            </tr>
+        <tr>
+          <td>{{ pre_booking.numberParticipants }}</td>
+          <td>{{ pre_booking.fkUser.email }}</td>
+          <td>
+            {{ include("pre_booking/_delete_form.html.twig") }}
+          </td>
+        </tr>
         {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
+        <tr>
+          <td colspan="3">no records found</td>
+        </tr>
         {% endfor %}
-        </tbody>
+      </tbody>
     </table>
-
-    <a href="{{ path('app_pre_booking_new') }}">Create new</a>
+  </div>
+  <a href="{{ path('app_pre_booking_new') }}">Create new</a>
+</div>
 {% endblock %}

@@ -16,7 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class DashboardController extends AbstractController
 {
-    #[Route('/dashboard', name: 'app_dashboard')]
+    #[Route('/dashboard', name: 'app_dashboard', methods: ['GET'])]
     public function index(ManagerRegistry $doctrine): Response
     {
 
@@ -28,7 +28,8 @@ class DashboardController extends AbstractController
 
         return $this->render('dashboard/index.html.twig', [
             'pre' => $pre,
-            'course' => $course
+            'course' => $course,
+
         ]);
     }
 }
