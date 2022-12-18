@@ -1,18 +1,50 @@
 {% extends 'base.html.twig' %} {% block title %} Dashboard {% endblock %} {%
 block body %}
-
-<div class="container d-flex justify-content-evenly mt-4">
-  <a href="{{ path('app_course_index') }}"> Courses</a> <br />
-  <a href="{{ path('app_course_category_index') }}"> Course Categories</a><br />
-  <a href="{{ path('app_price_index') }}"> Prices</a> <br />
-  <a href="{{ path('app_image_gallery_index') }}"> Images Gallery</a> <br />
-  <a href="{{ path('app_pre_booking_index') }}"> Pre Bookings</a> <br />
+<div class="container p-4 border border-secondary rounded border-opacity-25">
+  <div class="container d-flex justify-content-evenly mt-4">
+    <a href="{{ path('app_course_index') }}"> Courses</a> <br />
+    <a href="{{ path('app_course_category_index') }}"> Course Categories</a
+    ><br />
+    <a href="{{ path('app_price_index') }}"> Prices</a> <br />
+    <a href="{{ path('app_image_gallery_index') }}"> Images Gallery</a> <br />
+    <a href="{{ path('app_pre_booking_index') }}"> Pre Bookings</a> <br />
+  </div>
 </div>
+
 <br />
-<div class="container">
-  <div
-    class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
-    <div id="calendar"></div>
+
+<div class="container d-flex justify-content-between">
+  <div class="container mt-4" id="external-events">
+    <p><strong>Draggable Events</strong></p>
+
+    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+      <div class="fc-event-main">My Event 1</div>
+    </div>
+    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+      <div class="fc-event-main">My Event 2</div>
+    </div>
+    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+      <div class="fc-event-main">My Event 3</div>
+    </div>
+    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+      <div class="fc-event-main">My Event 4</div>
+    </div>
+    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+      <div class="fc-event-main">My Event 5</div>
+    </div>
+    <p>
+      <input type="checkbox" id="drop-remove" /><label for="drop-remove"
+        >remove after drop</label
+      >
+    </p>
+  </div>
+  <div class="container d-flex justify-content-around w-100">
+    <div
+      class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
+      <div id="calendar-container">
+        <div id="calendar"></div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
