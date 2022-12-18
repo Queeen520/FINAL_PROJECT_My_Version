@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %} Dashboard {% endblock %} {%
 block body %}
+
 <div class="container d-flex justify-content-evenly mt-4">
   <a href="{{ path('app_course_index') }}"> Courses</a> <br />
   <a href="{{ path('app_course_category_index') }}"> Course Categories</a><br />
@@ -7,14 +8,11 @@ block body %}
   <a href="{{ path('app_image_gallery_index') }}"> Images Gallery</a> <br />
   <a href="{{ path('app_pre_booking_index') }}"> Pre Bookings</a> <br />
 </div>
+<br />
 <div class="container">
-  <h1 class="mb-2">New Pre Bookings - Please Check & Confirm</h1>
-
   <div
     class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
-    {% block cal %}
     <div id="calendar"></div>
-    {% endblock %}
   </div>
 </div>
 {% endblock %}
