@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %} {% block title %}Edit{% endblock %} {% block body %} {% include 'user2_navbar.html.twig' %}
+<div class="container w-50">
+    <h1 class="d-flex justify-content-center py-3">Edit Data</h1>
+
+    <div class="reg-form">
+        {{ form_start(EditForm) }}
+        {{ form_row(EditForm.fname, { label: "First Name" }) }} 
+        {{ form_row(EditForm.lname, { label: "Last Name" }) }} 
+        {{ form_row(EditForm.address, { label: "Address" }) }} 
+        {{ form_row(EditForm.email) }}
+        {{ form_row(EditForm.image) }}
+
+        {{ form_row(EditForm.plainPassword, { label: "Password" }) }}
+    </div>
+    <div class="reg-form d-flex flex-column justify-content-center align-items-center">
+       
+        <button type="submit" class="btn btn-info">Edit</button> {{ form_end(EditForm) }}
+    </div>
+
+    {# <a href="{{ path('app_login') }}">login</a>
+    <a href="{{ path('app_register') }}">register</a>
+    <a href="{{ path('app_logout') }}">logout</a> #}
+</div>
+{% endblock %}

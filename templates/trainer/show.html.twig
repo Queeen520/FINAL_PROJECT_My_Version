@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %} Hello Trainer!
+{% endblock %}
+
+{% block body %} {% include 'user2_navbar.html.twig' %}
+
+<div class="container mt-4">
+    <div class="row row-cols-3 d-flex justify-content-evenly">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5> <img class='img-thumbnail rounded-circle' src="{{asset('pictures/') ~ trainer.image}}" alt="image"
+                        width="150" /> </h5>
+                <h5 class="card-title">{{ trainer.fname}} {{trainer.lname}}</h5>
+
+                <p class="card-text">{{ trainer.description }}</p>
+
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TRAINER') %}
+                <a href="/edit/{{ trainer.id }}" class="btn btn-warning">Edit</a>
+                <a href="/delete/{{ trainer.id }}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html.twig" %} {% block body %} {% include 'user2_navbar.html.twig' %}
+<style>
+    body {
+        background-color: antiquewhite;
+    }
+</style>
+
+
+<section class="details px-3" height: "150vh ">
+
+    <h2 class="d-flex flex-row justify-content-center py-5 ">
+        {{ coursecategories.name }}
+    </h2>
+
+    <div class="container ">
+        <p><strong>Course description:</strong></p>
+    </div>
+
+    <p class="d-flex flex-row justify-content-center text-align-center ">
+        {{ coursecategories.description }}
+    </p>
+    </div>
+
+    <div class="container mt-4 pt-4">
+        <h1 class="d-flex justify-content-center ">Course Table</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Course Category</th>
+                    <th>Date & Time</th>
+                    <th>Available</th>
+                    <th>Booking</th>
+                </tr>
+            </thead>
+            {% for course in courses %}
+            <tbody>
+                <tr>
+                    <td>
+                        {{ course.fkCourseCategory ? course.fkCourseCategory.name : " " }}
+                    </td>
+                    <td>
+                        {{ course.startTime ? course.startTime|date('d.M.Y H:i') : '' }} <br> {{ course.endTime ? course.endTime|date('d.M.Y H:i') : '' }}
+                    </td>
+                    {% if course.available == 1 %}
+                    <td class="text-success ">Pre-Booking possible</td>
+                    <td class="booking ">
+
+                        <a class="btn btn-success " {% if is_granted( 'ROLE_USER') %} href="{{path( 'app_register_with_login', { course_id: course.id })}} " {% else %} href="{{path( 'app_register_no_login', { course_id: course.id })}} " {% endif %}>Register
+                            Now</a> {# <a class="btn btn-success " href="{{ path( 'app_register_no_login', { course_id: course.id }) }} ">Register Now</a> #}
+                    </td>
+                    {% else %}
+                    <td class="text-danger ">Pre-Booking no longer possible</td>
+                    <td class="booking "></td>
+                    {% endif %}
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5 ">no records found</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="container mt-5 d-flex flex-column justify-content-center ">
+        <h1 class="d-flex flex-row justify-content-center py-4 ">Price Table</h1>
+        <table class="table d-flex justify-content-center w-100 ">
+            <tbody>
+                <tr>
+                    <th>Student Price</th>
+                    {#
+                    <td>€ {{ price.fkPrice.studentPrice }}</td> #}
+                    <td>€ {{ coursecategories.price.studentPrice }}</td>
+                </tr>
+                <tr>
+                    <th>Business Price</th>
+                    {#
+                    <td>€ {{ price.fkPrice.BusinessPrice }}</td> #}
+                    <td>€ {{ coursecategories.price.businessPrice }}</td>
+                </tr>
+                <tr>
+                    <th>Private Person Price</th>
+                    {#
+                    <td>€ {{ price.fkPrice.privatePrice }}</td> #}
+                    <td>€ {{ coursecategories.price.privatePrice }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+{% endblock %}

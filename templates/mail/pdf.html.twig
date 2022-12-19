@@ -1,0 +1,25 @@
+{# ./templates/mail/mypdf.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title of the PDF</title>
+    </head>
+    <body>
+        <h4>{{ title }}</h4>
+        <h4>First Aid Inc hereby certifies </h4>
+        <h4>the successful participation of </h4>
+        <h4>{{user_name}}</h4>
+        <h4>in the First Aid course  </h4>
+        
+        <h4>{{course_name}}</h4>
+        <h4>held at   </h4>
+        <h4>{{course_date}}
+        <h4>
+        </h4>
+        <h4>on our premises at First Aid St., Vienna, Austria        </h4>
+        
+        <h4>{{ 'now'|date('d - m -Y') }}, Dirst Aid Inc.</h4>
+        
+    </body>
+</html>
