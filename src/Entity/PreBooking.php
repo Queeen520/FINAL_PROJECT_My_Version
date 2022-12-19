@@ -62,4 +62,41 @@ class PreBooking
 
         return $this;
     }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getReview(): ?string
+    {
+        return $this->review;
+    }
+
+    public function setReview(?string $review): self
+    {
+        $this->review = $review;
+
+        return $this;
+    }
+
+    public function getGraduation(): ?string
+    {
+        return $this->graduation;
+    }
+
+    public function setGraduation(?string $graduation): self
+    {
+        $this->graduation = $graduation;
+
+        return $this;
+    }
+
 }

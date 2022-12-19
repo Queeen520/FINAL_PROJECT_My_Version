@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_review', {'course_id': pre_booking.fkCourse.id}) }}" onsubmit="return confirm('Are you sure you want to write a review?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('review' ~ pre_booking.fkCourse.id) }}">
+    <button class="btn btn-info">Write Review</button>
+</form>

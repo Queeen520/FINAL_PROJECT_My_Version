@@ -21,8 +21,6 @@ class HomeController extends AbstractController
         $coursecategories = $doctrine->getRepository(CourseCategory::class)->findAll();
         $courses = $doctrine->getRepository(Course::class)->findAll();  
         
-        //dd($true);
-
         //dd($courses);
         return $this->render('home/index.html.twig', [
             // 'coursecategories' => $coursecategories,

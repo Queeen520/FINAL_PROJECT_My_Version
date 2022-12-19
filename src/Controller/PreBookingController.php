@@ -75,4 +75,34 @@ class PreBookingController extends AbstractController
 
         return $this->redirectToRoute('app_pre_booking_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/confirm/{id}', name: 'app_pre_booking_confirm', methods: ['POST'])]
+    public function confirm(Request $request, PreBooking $preBooking, PreBookingRepository $preBookingRepository): Response
+    {
+
+        #dd($preBooking);
+        if ($this->isCsrfTokenValid('confirm'.$preBooking->getId(), $request->request->get('_token'))) {
+            
+            $preBooking->setStatus('confirmed');
+            $preBookingRepository->save($preBooking, true);
+        }
+
+        return $this->redirectToRoute('app_pre_booking_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+   /*
+    #[Route('/graduate/{id}', name: 'app_pre_booking_graduate', methods: ['POST'])]
+    public function graduate(Request $request, PreBooking $preBooking, PreBookingRepository $preBookingRepository): Response
+    {
+        #dd($request);
+
+        #dd($preBooking);
+        if ($this->isCsrfTokenValid('graduate'.$preBooking->getId(), $request->request->get('_token'))) {
+            
+            $preBooking->setGraduation('yes');
+            $preBookingRepository->save($preBooking, true);
+        }
+
+        return $this->redirectToRoute('app_pre_booking_index', [], Response::HTTP_SEE_OTHER);
+    } */
 }
