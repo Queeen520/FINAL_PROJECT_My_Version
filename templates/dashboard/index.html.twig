@@ -8,6 +8,7 @@ block body %}
     <a href="{{ path('app_price_index') }}"> Prices</a> <br />
     <a href="{{ path('app_image_gallery_index') }}"> Images Gallery</a> <br />
     <a href="{{ path('app_pre_booking_index') }}"> Pre Bookings</a> <br />
+    <a href="{{ path('app_booking_index') }}">Calendar Entry</a>
   </div>
 </div>
 
@@ -16,9 +17,13 @@ block body %}
 <div class="container d-flex justify-content-between">
   <div class="container mt-4" id="external-events">
     <p><strong>Draggable Events</strong></p>
-
+    {% for booking in bookings %}
     <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
-      <div class="fc-event-main">My Event 1</div>
+      <div class="fc-event-main">
+        {{ booking.titel }}: {{ booking.beginAt|date('H:i') }} -
+        {{ booking.endAt|date('H:i') }}
+      </div>
+      <div class="fc-event-main">Priority: {{ booking.priority }}</div>
     </div>
     <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
       <div class="fc-event-main">My Event 2</div>
@@ -32,6 +37,7 @@ block body %}
     <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
       <div class="fc-event-main">My Event 5</div>
     </div>
+    {% endfor %}
     <p>
       <input type="checkbox" id="drop-remove" /><label for="drop-remove"
         >remove after drop</label
@@ -42,6 +48,8 @@ block body %}
     <div
       class="container mb-4 mt-4 p-4 border border-secondary rounded border-opacity-25">
       <div id="calendar-container">
+        <a href="{{ path('app_booking_new') }}">Create New Calendar Entry</a>
+
         <div id="calendar"></div>
       </div>
     </div>

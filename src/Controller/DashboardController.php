@@ -6,6 +6,8 @@ namespace App\Controller;
 use App\Entity\PreBooking;
 use App\Entity\Course;
 use App\Entity\CourseCategory;
+use App\Repository\BookingRepository;
+
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,19 +19,19 @@ use Doctrine\Persistence\ManagerRegistry;
 class DashboardController extends AbstractController
 {
     #[Route('/dashboard', name: 'app_dashboard', methods: ['GET'])]
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(ManagerRegistry $doctrine, BookingRepository $bookingRepository): Response
     {
 
         $pre = $doctrine->getRepository(PreBooking::class)->findAll();
         $course = $doctrine->getRepository(Course::class)->findAll();
 
-
+        
         //dd($course);
 
         return $this->render('dashboard/index.html.twig', [
             'pre' => $pre,
             'course' => $course,
-
+            'bookings' => $bookingRepository->findAll(),
         ]);
     }
 }
