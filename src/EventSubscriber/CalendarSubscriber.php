@@ -35,20 +35,24 @@ class CalendarSubscriber implements EventSubscriberInterface
         $end = $calendar->getEndAt();
         $titel = $calendar->getTitel();
         $prio = $calendar->getPriority();
+        $filters = $calendar->getFilters();
 
+    }
 
+    public function fillCalendarWithBookings(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, string $titel, string $prio, array $filters)
+    {
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
-            ->where('booking.beginAt BETWEEN :start and :end ')
-            ->setParameter('beginAt', $start->format('Y-m-d H:i:s'))
-            ->setParameter('endAt', $end->format('Y-m-d H:i:s'))
-            ->setParameter('Titel', $titel->format(''))
-            ->setParameter('Priority', $prio->format(''))
+            ->setParameter('start', $start->format('Y-m-d H:i:s'))
+            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->setParameter('titel', $titel)
+            ->setParameter('priority', $prio)
             ->getQuery()
             ->getResult()
         ;
+
 
         foreach ($bookings as $booking) {
             // this create the events with your data (here booking data) to fill calendar
